@@ -9,7 +9,12 @@ public class Node {
     private int row;
     private int col;
 
+    private int floor;
+
     private boolean isBlock;
+
+    //특정 위치
+    private int certain_location;
 
     private Node parent;
 
@@ -32,7 +37,7 @@ public class Node {
         calculateFinalCost();
     }
 
-    //더 나은 경로 확인하는 함수
+    //더 나은 경로인지 확인하는 함수
     public boolean checkBetterPath(Node currentNode, int cost) {
         int gCost = currentNode.getG() + cost;
         if (gCost < getG()) {
@@ -55,7 +60,7 @@ public class Node {
         return this.getRow() == other.getRow() && this.getCol() == other.getCol();
     }
 
-
+    //노드의 열과행을 문자열로 바꾸는 함수
     @Override
     public String toString() {
         return "Node [row=" + row + ", col=" + col + "]";
@@ -93,12 +98,21 @@ public class Node {
         this.parent = parent;
     }
 
+
     public boolean isBlock() {
         return isBlock;
     }
 
     public void setBlock(boolean isBlock) {
         this.isBlock = isBlock;
+    }
+
+    public void setCertain_location(int certain_location){
+        this.certain_location = certain_location;
+    }
+
+    public int getCertain_location(){
+        return certain_location;
     }
 
     public int getRow() {
@@ -116,6 +130,15 @@ public class Node {
     public void setCol(int col) {
         this.col = col;
     }
+
+    public int getFloor(){
+        return floor;
+    }
+
+    public void setFloor(int floor){
+        this.floor = floor;
+    }
+
 }
 
 
