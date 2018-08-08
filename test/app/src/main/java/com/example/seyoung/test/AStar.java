@@ -11,7 +11,6 @@ public class AStar {
     private static int DEFAULT_HV_COST = 10; // Horizontal - Vertical Cost
     private static int DEFAULT_DIAGONAL_COST = 14;
 
-
     private int hvCost;
     private int diagonalCost;
 
@@ -189,8 +188,8 @@ public class AStar {
     }
 
     //층 수가 같은지 확인하는 함수
-    public boolean isEqualFloor(Node startNode,Node finalNode){
-        if(startNode.getFloor() == finalNode.getFloor())
+    public boolean isEqualFloor(Node initialNode,Node finalNode){
+        if(initialNode.getFloor() == finalNode.getFloor())
             return true;
         else
             return false;
