@@ -16,6 +16,9 @@ public class UnderGround_1 extends SubWayMap {
     Node exit_5;
     Node exit_6;
 
+    private int checkElevator;
+    private int checkStair;
+
     public UnderGround_1(int rows,int cols,int[][] underGround_isBlock){
         this.underGround_rows = rows;
         this.underGround_cols = cols;
@@ -27,22 +30,28 @@ public class UnderGround_1 extends SubWayMap {
 
     @Override
     public Node better_Means_Transportation(Node initalNode, Node finalNode){
-//        AStar aStar = new AStar(underGround1_rows,underGround1_cols,initalNode,stairNode);
-//        for(Node node : aStar.findPath()){
-//            checkStair += node.getF();
-//        }
-//        aStar = new AStar(underGround2_rows,underGround2_cols,stairNode,finalNode);
-//        for(Node node : aStar.findPath()){
-//            checkStair += node.getF();
-//        }
-//        aStar = new AStar(underGround2_rows,underGround2_cols,initalNode,elevatorNode);
-//        for(Node node : aStar.findPath()){
-//            checkElevator += node.getF();
-//        }
-//        aStar = new AStar(underGround2_rows,underGround2_cols,elevatorNode,finalNode);
-//        for(Node node : aStar.findPath()){
-//            checkElevator += node.getF();
-//        }
-        return initalNode;
+        AStar aStar = new AStar(underGround_rows,underGround_cols,initalNode,elevator_1);
+        for(Node node : aStar.findPath()){
+            checkStair += node.getF();
+        }
+        aStar = new AStar(underGround_rows,underGround_cols,elevator_1,finalNode);
+        for(Node node : aStar.findPath()){
+            checkStair += node.getF();
+        }
+        aStar = new AStar(underGround_rows,underGround_cols,initalNode,stair_1);
+        for(Node node : aStar.findPath()){
+            checkElevator += node.getF();
+        }
+        aStar = new AStar(underGround_rows,underGround_cols,stair_1,finalNode);
+        for(Node node : aStar.findPath()){
+            checkElevator += node.getF();
+        }
+
+        if(checkStair >= checkElevator){
+            return elevator_1;
+        }
+        else{
+            return stair_1;
+        }
     }
 }
