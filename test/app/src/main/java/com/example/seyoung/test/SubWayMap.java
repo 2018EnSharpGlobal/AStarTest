@@ -9,7 +9,8 @@ public class SubWayMap {
     int[][] underGround_isBlock;
 
     public SubWayMap(){
-
+        underGround_rows = 7;
+        underGround_cols =7;
     }
 
     public Node better_Means_Transportation(Node initalNode, Node finalNode){

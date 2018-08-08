@@ -98,7 +98,6 @@ public class Node {
         this.parent = parent;
     }
 
-
     public boolean isBlock() {
         return isBlock;
     }
