@@ -2,6 +2,9 @@ package com.example.seyoung.test;
 
 import android.util.Log;
 
+import java.util.HashMap;
+import java.util.PriorityQueue;
+
 public class UnderGround_1 extends SubWayMap {
     Node elevator_1;
     Node elevator_2;
@@ -23,39 +26,206 @@ public class UnderGround_1 extends SubWayMap {
     private int checkElevator;
     private int checkStair;
 
+    private int[] check_means_Transportation;
+
+    private int[] check_Elevator;
+    private int[] check_Stair;
+
+
     public UnderGround_1(){
         this.underGround_isBlock = underGround1_isBlock;
 
         elevator_1 = new Node(6,4);
         stair_1 = new Node(2,6);
+
+        checkElevator = 0 ;
+        checkStair = 0;
+
+        check_means_Transportation= new int[6];
+        check_Elevator = new int[4];
+        check_Stair = new int[2];
+
+        for(int i=0;i<check_means_Transportation.length;i++){
+            check_means_Transportation[i] = 0;
+        }
+
+        for(int i=0;i< check_Elevator.length;i++){
+            check_Elevator[i] = 0;
+        }
+
+        for(int i=0; i<check_Stair.length;i++){
+            check_Stair[i] = 0;
+        }
     }
+
 
     @Override
     public Node better_Means_Transportation(Node initalNode, Node finalNode){
+        int find_means_Transportation;
+
+        //엘레베이터
         AStar aStar = new AStar(underGround_rows,underGround_cols,initalNode,elevator_1);
+        aStar = new AStar(underGround_rows,underGround_cols,initalNode,elevator_1);
         for(Node node : aStar.findPath()){
-            checkElevator  += node.getF();
+            check_means_Transportation[0]  += node.getF();
         }
         aStar = new AStar(underGround_rows,underGround_cols,elevator_1,finalNode);
         for(Node node : aStar.findPath()){
-            checkElevator += node.getF();
+            check_means_Transportation[0] += node.getF();
         }
+
+//        aStar = new AStar(underGround_rows,underGround_cols,initalNode,elevator_2);
+//        for(Node node : aStar.findPath()){
+//            check_means_Transportation[1] += node.getF();
+//        }
+//        aStar = new AStar(underGround_rows,underGround_cols,elevator_2,finalNode);
+//        for(Node node : aStar.findPath()){
+//            check_means_Transportation[1] += node.getF();
+//        }
+//
+//        aStar = new AStar(underGround_rows,underGround_cols,initalNode,elevator_3);
+//        for(Node node : aStar.findPath()){
+//            check_means_Transportation[2] += node.getF();
+//        }
+//        aStar = new AStar(underGround_rows,underGround_cols,elevator_3,finalNode);
+//        for(Node node : aStar.findPath()){
+//            check_means_Transportation[2] += node.getF();
+//        }
+//
+//        aStar = new AStar(underGround_rows,underGround_cols,initalNode,elevator_4);
+//        for(Node node : aStar.findPath()){
+//            check_means_Transportation[3] += node.getF();
+//        }
+//        aStar = new AStar(underGround_rows,underGround_cols,elevator_4,finalNode);
+//        for(Node node : aStar.findPath()){
+//            check_means_Transportation[3] += node.getF();
+//        }
+
+        //계단
         aStar = new AStar(underGround_rows,underGround_cols,initalNode,stair_1);
         for(Node node : aStar.findPath()){
-            checkStair += node.getF();
+            check_means_Transportation[4]  += node.getF();
         }
         aStar = new AStar(underGround_rows,underGround_cols,stair_1,finalNode);
         for(Node node : aStar.findPath()){
-            checkStair += node.getF();
+            check_means_Transportation[4] += node.getF();
         }
+//        aStar = new AStar(underGround_rows,underGround_cols,initalNode,stair_2);
+//        for(Node node : aStar.findPath()){
+//            check_means_Transportation[5] += node.getF();
+//        }
+//        aStar = new AStar(underGround_rows,underGround_cols,stair_2,finalNode);
+//        for(Node node : aStar.findPath()){
+//            check_means_Transportation[5] += node.getF();
+//        }
 
-        Log.e(this.getClass().getName(),"지하 1층 checkStair: "+String.valueOf(checkStair)+"checkElevator: "+String.valueOf(checkElevator));
+        check_means_Transportation[1] = 2000;
+        check_means_Transportation[2] = 2000;
+        check_means_Transportation[3] = 2000;
+        check_means_Transportation[5] = 2000;
 
-        if(checkStair >= checkElevator){
+        find_means_Transportation = compare_Minimum(check_means_Transportation);
+
+        if(find_means_Transportation==0){
             return elevator_1;
         }
-        else{
+        else if(find_means_Transportation == 1){
+            return elevator_2;
+        }
+        else if(find_means_Transportation == 2){
+            return elevator_3;
+        }
+        else if(find_means_Transportation == 3){
+            return elevator_4;
+        }
+        else if(find_means_Transportation == 4){
             return stair_1;
         }
+        else{
+            return stair_2;
+        }
+    }
+
+    @Override
+    public Node stair_Means_Transportation(Node initalNode, Node finalNode) {
+        AStar aStar = new AStar(underGround_rows,underGround_cols,initalNode,stair_1);
+        for(Node node : aStar.findPath()){
+            check_Stair[0]  += node.getF();
+        }
+        aStar = new AStar(underGround_rows,underGround_cols,stair_1,finalNode);
+        for(Node node : aStar.findPath()){
+            check_Stair[0] += node.getF();
+        }
+        aStar = new AStar(underGround_rows,underGround_cols,initalNode,stair_2);
+        for(Node node : aStar.findPath()){
+            check_Stair[1] += node.getF();
+        }
+        aStar = new AStar(underGround_rows,underGround_cols,stair_2,finalNode);
+        for(Node node : aStar.findPath()){
+            check_Stair[1] += node.getF();
+        }
+
+        if(check_Stair[0] >= check_Stair[1]){
+            return stair_1;
+        }
+        else{
+            return stair_2;
+        }
+    }
+
+    @Override
+    public Node elevator_Means_Transportation(Node initalNode, Node finalNode) {
+        int find_elevator;
+        AStar aStar = new AStar(underGround_rows,underGround_cols,initalNode,elevator_1);
+        for(Node node : aStar.findPath()){
+            check_Elevator[0]  += node.getF();
+        }
+        aStar = new AStar(underGround_rows,underGround_cols,elevator_1,finalNode);
+        for(Node node : aStar.findPath()){
+            check_Elevator[0] += node.getF();
+        }
+
+        aStar = new AStar(underGround_rows,underGround_cols,initalNode,elevator_2);
+        for(Node node : aStar.findPath()){
+            check_Elevator[1] += node.getF();
+        }
+        aStar = new AStar(underGround_rows,underGround_cols,elevator_2,finalNode);
+        for(Node node : aStar.findPath()){
+            check_Elevator[1] += node.getF();
+        }
+
+        aStar = new AStar(underGround_rows,underGround_cols,initalNode,elevator_3);
+        for(Node node : aStar.findPath()){
+            check_Elevator[2] += node.getF();
+        }
+        aStar = new AStar(underGround_rows,underGround_cols,elevator_3,finalNode);
+        for(Node node : aStar.findPath()){
+            check_Elevator[2] += node.getF();
+        }
+
+        aStar = new AStar(underGround_rows,underGround_cols,initalNode,elevator_4);
+        for(Node node : aStar.findPath()){
+            check_Elevator[3] += node.getF();
+        }
+        aStar = new AStar(underGround_rows,underGround_cols,elevator_4,finalNode);
+        for(Node node : aStar.findPath()){
+            check_Elevator[3] += node.getF();
+        }
+
+        find_elevator = compare_Minimum(check_Elevator);
+
+        if(find_elevator==0){
+            return elevator_1;
+        }
+        else if(find_elevator == 1){
+            return elevator_2;
+        }
+        else if(find_elevator == 2){
+            return elevator_3;
+        }
+        else{
+            return elevator_4;
+        }
+
     }
 }

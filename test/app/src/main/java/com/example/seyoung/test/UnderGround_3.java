@@ -19,6 +19,9 @@ public class UnderGround_3 extends SubWayMap {
 
     public UnderGround_3(){
       this.underGround_isBlock = underGround3_isBlock;
+
+        checkElevator = 0 ;
+        checkStair = 0;
     }
 
     @Override
@@ -48,5 +51,15 @@ public class UnderGround_3 extends SubWayMap {
         else{
             return stair_1;
         }
+    }
+
+    @Override
+    public Node stair_Means_Transportation(Node initalNode, Node finalNode) {
+        return super.stair_Means_Transportation(initalNode, finalNode);
+    }
+
+    @Override
+    public Node elevator_Means_Transportation(Node initalNode, Node finalNode) {
+        return super.elevator_Means_Transportation(initalNode, finalNode);
     }
 }
