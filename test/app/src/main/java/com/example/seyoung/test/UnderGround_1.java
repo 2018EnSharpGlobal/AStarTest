@@ -21,6 +21,14 @@ public class UnderGround_1 extends SubWayMap {
     Node exit_6;
 
     int[][] underGround1_isBlock = new int[][]{{0,0},{1,0},{1,1},{2,1},{3,1},{4,1},{5,0},{5,1},{6,0},{3,4},{4,4},{5,3},{5,4},{6,3},{3,6},{4,6},{5,6},{6,6}};
+    int[][] underGround1_information = new int[][]{
+            {0,1,2,3,4,5,6},
+            {0,1,2,3,4,5,6},
+            {0,1,2,3,4,5,6},
+            {0,1,2,3,4,5,6},
+            {0,1,2,3,4,5,6},
+            {0,1,2,3,4,5,6},
+            {0,1,2,3,4,5,6}};
 
     private int checkElevator;
     private int checkStair;
@@ -32,6 +40,7 @@ public class UnderGround_1 extends SubWayMap {
 
     public UnderGround_1(){
         this.underGround_isBlock = underGround1_isBlock;
+        this.underGround_information = underGround1_information;
 
         elevator_1 = new Node(6,4);
         stair_1 = new Node(2,6);

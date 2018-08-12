@@ -12,6 +12,8 @@ public class SubWayMap {
     //길이 막혀 있는 위치 설정
     int[][] underGround_isBlock;
 
+    int[][] underGround_information;
+
     public SubWayMap(){
         underGround_rows = 7;
         underGround_cols =7;

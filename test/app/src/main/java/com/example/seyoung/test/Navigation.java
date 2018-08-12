@@ -1,6 +1,8 @@
 package com.example.seyoung.test;
 
 
+import android.util.Log;
+
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -42,6 +44,13 @@ public class Navigation {
         //층 수 삽입
         this.floor =floor;
 
+//        //노드 정보 초기화
+//        for(int row = 0; row <searchArea.length; row++){
+//            for(int col = 0; col < searchArea[row].length; col++){
+//                searchArea[row][col].setInforamtion(-1);
+//            }
+//        }
+
         //열린 목록을 우선순위큐 리스트로 만듦
         this.openList = new PriorityQueue<Node>(new Comparator<Node>() {
             @Override
@@ -72,19 +81,22 @@ public class Navigation {
         }
     }
 
-    //지도에서 막힌 부분 설정하는 함수
-    public void setBlocks(int[][] blocksArray) {
-        for (int i = 0; i < blocksArray.length; i++) {
-            int row = blocksArray[i][0];
-            int col = blocksArray[i][1];
-            setBlock(row, col);
-        }
-    }
+//    //지도에서 막힌 부분 설정하는 함수
+//    public void setBlocks(int[][] blocksArray) {
+//        for (int i = 0; i < blocksArray.length; i++) {
+//            int row = blocksArray[i][0];
+//            int col = blocksArray[i][1];
+//            setBlock(row, col);
+//        }
+//    }
 
     //지도에 있는 정보
     public void setInformations(int[][] infoArray){
-        for(int i=0;i< infoArray.length; i++){
-
+        for(int row=0;row< infoArray.length; row++){
+            for(int col = 0 ; col < infoArray[row].length; col++){
+                setInformations(row,col,infoArray[row][col]);
+                Log.e("searchArea: ","row:"+String.valueOf(row)+","+"col:"+String.valueOf(col)+",Value:"+String.valueOf(infoArray[row][col]));
+            }
         }
     }
 
@@ -186,7 +198,7 @@ public class Navigation {
     //노드 체크하는 함수
     private void checkNode(Node currentNode, int col, int row, int cost) {
         Node adjacentNode = getSearchArea()[row][col];
-        if (!adjacentNode.isBlock() && !getClosedList().contains(adjacentNode)) {
+        if (!adjacentNode.IsBlock() && !getClosedList().contains(adjacentNode)) {
             if (!getOpenList().contains(adjacentNode)) {
                 adjacentNode.setNodeData(currentNode, cost);
                 getOpenList().add(adjacentNode);
@@ -210,9 +222,9 @@ public class Navigation {
         return openList.size() == 0;
     }
 
-    private void setBlock(int row, int col) {
-        this.searchArea[row][col].setBlock(true);
-    }
+//    private void setBlock(int row, int col) {
+//        this.searchArea[row][col].setBlock(true);
+//    }
 
     //노드 정보 설정
     private void setInformations(int row,int col,int information) { this.searchArea[row][col].setInforamtion(information);}

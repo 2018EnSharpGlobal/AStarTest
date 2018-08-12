@@ -12,7 +12,7 @@ public class Node {
 
     private int floor;
 
-    private boolean isBlock;
+    //private boolean isBlock;
 
     //지하철역에 대한 정보
     private int inforamtion;
@@ -102,13 +102,13 @@ public class Node {
         this.parent = parent;
     }
 
-    public boolean isBlock() {
-        return isBlock;
-    }
+//    public boolean isBlock() {
+//        return isBlock;
+//    }
 
-    public void setBlock(boolean isBlock) {
-        this.isBlock = isBlock;
-    }
+//    public void setBlock(boolean isBlock) {
+//        this.isBlock = isBlock;
+//    }
 
     public int getInforamtion() {return inforamtion;}
 
@@ -145,5 +145,125 @@ public class Node {
     public void setFloor(int floor){
         this.floor = floor;
     }
+
+    public boolean IsBlock(){
+        if(this.inforamtion == MainActivity.block)
+            return true;
+        else
+            return false;
+    }
+
+    public boolean IsExit_1(){
+        if(this.inforamtion == MainActivity.exit_1)
+            return true;
+        else
+            return false;
+    }
+
+    public boolean IsExit_2(){
+        if(this.inforamtion == MainActivity.exit_2)
+            return true;
+        else
+            return false;
+    }
+
+    public boolean IsExit_3(){
+        if(this.inforamtion == MainActivity.exit_3)
+            return true;
+        else
+            return false;
+    }
+
+    public boolean IsExit_4(){
+        if(this.inforamtion == MainActivity.exit_4)
+            return true;
+        else
+            return false;
+    }
+
+    public boolean IsExit_5(){
+        if(this.inforamtion == MainActivity.exit_5)
+            return true;
+        else
+            return false;
+    }
+
+    public boolean IsExit_6(){
+        if(this.inforamtion == MainActivity.exit_6)
+            return true;
+        else
+            return false;
+    }
+
+    public boolean IsElevator_1(){
+        if(this.inforamtion == MainActivity.elevator_1)
+            return true;
+        else
+            return false;
+    }
+
+    public boolean IsElevator_2(){
+        if(this.inforamtion == MainActivity.elevator_2)
+            return true;
+        else
+            return false;
+    }
+
+    public boolean IsElevator_3(){
+        if(this.inforamtion == MainActivity.elevator_3)
+            return true;
+        else
+            return false;
+    }
+
+    public boolean IsElevator_4(){
+        if(this.inforamtion == MainActivity.elevator_4)
+            return true;
+        else
+            return false;
+    }
+
+    public boolean IsStair_1(){
+        if(this.inforamtion == MainActivity.stair_1)
+            return true;
+        else
+            return false;
+    }
+
+    public boolean IsStair_2(){
+        if(this.inforamtion == MainActivity.stair_2)
+            return true;
+        else
+            return false;
+    }
+
+    public boolean IsMen_bathroom(){
+        if(this.inforamtion == MainActivity.men_bathroom)
+            return true;
+        else
+            return false;
+    }
+
+    public boolean IsWomen_bathroom(){
+        if(this.inforamtion == MainActivity.women_bathroom)
+            return true;
+        else
+            return false;
+    }
+
+    public boolean IsTicket_barrier1(){
+        if(this.inforamtion == MainActivity.ticket_barrier1)
+            return true;
+        else
+            return false;
+    }
+
+    public boolean IsTicket_barrier2(){
+        if(this.inforamtion == MainActivity.ticket_barrier2)
+            return true;
+        else
+            return false;
+    }
+
 
 }
