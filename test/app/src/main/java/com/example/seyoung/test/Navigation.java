@@ -1,18 +1,21 @@
 package com.example.seyoung.test;
+
+
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.PriorityQueue;
 
-//Astar 알고리즘 클래스
-public class AStar {
-
+public class Navigation {
     //디폴트 값
     private static int DEFAULT_HV_COST = 10; // Horizontal - Vertical Cost
     private static int DEFAULT_DIAGONAL_COST = 14;
 
     private int hvCost;
     private int diagonalCost;
+
+    //지도의 층
+    private int floor;
 
     //지도 노드 배열
     private Node[][] searchArea;
@@ -26,15 +29,18 @@ public class AStar {
     private Node finalNode;
 
     //생성자 함수
-    public AStar(int rows, int cols, Node initialNode, Node finalNode, int hvCost, int diagonalCost) {
+    public Navigation(int rows, int cols, Node initialNode, Node finalNode, int hvCost, int diagonalCost,int floor) {
         this.hvCost = hvCost;
         this.diagonalCost = diagonalCost;
 
         setInitialNode(initialNode);
         setFinalNode(finalNode);
 
-        //지도 그리기
+        //지도 설정하기
         this.searchArea = new Node[rows][cols];
+
+        //층 수 삽입
+        this.floor =floor;
 
         //열린 목록을 우선순위큐 리스트로 만듦
         this.openList = new PriorityQueue<Node>(new Comparator<Node>() {
@@ -50,8 +56,8 @@ public class AStar {
     }
 
     //생성사 오버로딩
-    public AStar(int rows, int cols, Node initialNode, Node finalNode) {
-        this(rows, cols, initialNode, finalNode, DEFAULT_HV_COST, DEFAULT_DIAGONAL_COST);
+    public Navigation(int rows, int cols, Node initialNode, Node finalNode,int floor) {
+        this(rows, cols, initialNode, finalNode, DEFAULT_HV_COST, DEFAULT_DIAGONAL_COST,floor);
     }
 
     //노드로 지도 그리기
@@ -61,6 +67,7 @@ public class AStar {
                 Node node = new Node(i, j);
                 node.calculateHeuristic(getFinalNode());
                 this.searchArea[i][j] = node;
+                this.searchArea[i][j].setFloor(floor);
             }
         }
     }
@@ -71,6 +78,13 @@ public class AStar {
             int row = blocksArray[i][0];
             int col = blocksArray[i][1];
             setBlock(row, col);
+        }
+    }
+
+    //지도에 있는 정보
+    public void setInformations(int[][] infoArray){
+        for(int i=0;i< infoArray.length; i++){
+
         }
     }
 
@@ -92,6 +106,7 @@ public class AStar {
                 addAdjacentNodes(currentNode);
             }
         }
+
         return new ArrayList<Node>();
     }
 
@@ -187,43 +202,6 @@ public class AStar {
         }
     }
 
-    //층 수가 같은지 확인하는 함수
-    public boolean isEqualFloor(Node initialNode,Node finalNode){
-        if(initialNode.getFloor() == finalNode.getFloor())
-            return true;
-        else
-            return false;
-    }
-
-
-    //층 수 체크하는 함수
-    public void checkFloor(Node startNode,Node finalNode){
-        if(startNode.getFloor() != finalNode.getFloor()){
-            if(startNode.getFloor() == -1 && finalNode.getFloor() == -2){
-
-            }
-            else if(startNode.getFloor() == -1 && finalNode.getFloor() == -3){
-
-            }
-            else if(startNode.getFloor() == -2 && finalNode.getFloor() == -1){
-
-            }
-            else if(startNode.getFloor() == -2 && finalNode.getFloor() == -3){
-
-            }
-            else if(startNode.getFloor() == -3 && finalNode.getFloor() == -1){
-
-            }
-            else if(startNode.getFloor() == -3 && finalNode.getFloor() == -2){
-
-            }
-        }
-        else{
-
-        }
-    }
-
-
     private boolean isFinalNode(Node currentNode) {
         return currentNode.equals(finalNode);
     }
@@ -235,6 +213,9 @@ public class AStar {
     private void setBlock(int row, int col) {
         this.searchArea[row][col].setBlock(true);
     }
+
+    //노드 정보 설정
+    private void setInformations(int row,int col,int information) { this.searchArea[row][col].setInforamtion(information);}
 
     public Node getInitialNode() {
         return initialNode;
@@ -292,8 +273,3 @@ public class AStar {
         this.diagonalCost = diagonalCost;
     }
 }
-
-
-
-
-

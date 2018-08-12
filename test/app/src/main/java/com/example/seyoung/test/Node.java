@@ -1,5 +1,6 @@
 package com.example.seyoung.test;
 
+
 public class Node {
 
     private int g;
@@ -12,6 +13,9 @@ public class Node {
     private int floor;
 
     private boolean isBlock;
+
+    //지하철역에 대한 정보
+    private int inforamtion;
 
     //특정 위치
     private int certain_location;
@@ -106,6 +110,10 @@ public class Node {
         this.isBlock = isBlock;
     }
 
+    public int getInforamtion() {return inforamtion;}
+
+    public void setInforamtion(int inforamtion) {this.inforamtion = inforamtion;}
+
     public void setCertain_location(int certain_location){
         this.certain_location = certain_location;
     }
@@ -139,7 +147,3 @@ public class Node {
     }
 
 }
-
-
-
-
