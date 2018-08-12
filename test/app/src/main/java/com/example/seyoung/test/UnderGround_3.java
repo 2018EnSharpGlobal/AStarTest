@@ -18,7 +18,6 @@ public class UnderGround_3 extends SubWayMap {
     private int checkElevator;
 
     public UnderGround_3(){
-        this.underGround_isBlock = underGround3_isBlock;
 
         checkElevator = 0 ;
         checkStair = 0;

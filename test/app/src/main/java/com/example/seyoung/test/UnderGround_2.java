@@ -26,7 +26,6 @@ public class UnderGround_2 extends SubWayMap {
         private int checkElevator;
 
         public UnderGround_2(){
-            underGround_isBlock = underGround2_isBlock;
 
             elevator_1 = new Node(6,4);
             stair_1 = new Node(2,6);
@@ -53,8 +52,6 @@ public class UnderGround_2 extends SubWayMap {
 //            for(Node node : aStar.findPath()){
 //                checkStair += node.getF();
 //            }
-
-            Log.e(this.getClass().getName(),"지하 2층 checkStair: "+String.valueOf(checkStair)+"checkElevator: "+String.valueOf(checkElevator));
 
             if(checkStair >= checkElevator){
                 return elevator_1;

@@ -9,14 +9,11 @@ public class SubWayMap {
 
     int find_Minimum;
 
-    //길이 막혀 있는 위치 설정
-    int[][] underGround_isBlock;
-
     int[][] underGround_information;
 
     public SubWayMap(){
-        underGround_rows = 7;
-        underGround_cols =7;
+        underGround_rows = 200;
+        underGround_cols = 30;
     }
 
     //사용자 위치에서 가장 가까운 이동수단까지의 경로 제공
@@ -44,7 +41,6 @@ public class SubWayMap {
             }
         }
 
-
         int find_component;
 
         for(find_component=0;find_component<means_transportation.length;find_component++){
@@ -53,5 +49,10 @@ public class SubWayMap {
         }
 
         return find_component;
+    }
+
+    protected void set_Initail_Final_Node(Navigation navi,Node initialNode,Node finalNode){
+        navi.setInitialNode(initialNode);
+        navi.setFinalNode(finalNode);
     }
 }

@@ -44,12 +44,12 @@ public class Navigation {
         //층 수 삽입
         this.floor =floor;
 
-//        //노드 정보 초기화
-//        for(int row = 0; row <searchArea.length; row++){
-//            for(int col = 0; col < searchArea[row].length; col++){
-//                searchArea[row][col].setInforamtion(-1);
-//            }
-//        }
+        //노드 정보 초기화
+        for(int row = 0; row <searchArea.length; row++){
+            for(int col = 0; col < searchArea[row].length; col++){
+                searchArea[row][col].setInforamtion(-1);
+            }
+        }
 
         //열린 목록을 우선순위큐 리스트로 만듦
         this.openList = new PriorityQueue<Node>(new Comparator<Node>() {

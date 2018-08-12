@@ -9,39 +9,6 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    public static final int B1 = -1;
-    public static final int B2 = -2;
-    public static final int B3 = -3;
-
-    //벽
-    public static final int block = 0;
-
-    //출구
-    public static final int exit_1 = 1;
-    public static final int exit_2 = 2;
-    public static final int exit_3 = 3;
-    public static final int exit_4 = 4;
-    public static final int exit_5 = 5;
-    public static final int exit_6 = 6;
-
-    //엘레베이터
-    public static final int elevator_1 = 7;
-    public static final int elevator_2 = 8;
-    public static final int elevator_3 = 9 ;
-    public static final int elevator_4 = 10;
-
-    //계단
-    public static final int stair_1 = 11;
-    public static final int stair_2 = 12;
-
-    //화장실
-    public static final int men_bathroom = 13;
-    public static final int women_bathroom = 14;
-
-    //개찰구
-    public static final int ticket_barrier1 = 15;
-    public static final int ticket_barrier2 = 16;
-
     SubWayMap map_underGround_1;
     SubWayMap map_underGround_2;
     SubWayMap map_underGround_3;
@@ -77,22 +44,22 @@ public class MainActivity extends AppCompatActivity {
             Node better_transportation = null;
 
             switch(initialNode.getFloor()){
-                case B1:
+                case MapInfo.B1:
                     better_transportation = map_underGround_1.better_Means_Transportation(initialNode,finalNode);
-                    underGround_1 = new Navigation(map_underGround_1.underGround_rows, map_underGround_1.underGround_cols, initialNode, better_transportation,B1);
+                    underGround_1 = new Navigation(map_underGround_1.underGround_rows, map_underGround_1.underGround_cols, initialNode, better_transportation,MapInfo.B1);
                     //underGround_1.setBlocks(map_underGround_1.underGround_isBlock);
                     underGround_1.setInformations(map_underGround_1.underGround_information);
                     floor = underGround_1.findPath();
                     break;
-                case B2:
+                case MapInfo.B2:
                     better_transportation = map_underGround_2.better_Means_Transportation(initialNode,finalNode);
-                    underGround_2 = new Navigation(map_underGround_2.underGround_rows, map_underGround_2.underGround_cols, initialNode, better_transportation,B2);
+                    underGround_2 = new Navigation(map_underGround_2.underGround_rows, map_underGround_2.underGround_cols, initialNode, better_transportation,MapInfo.B2);
                     //underGround_2.setBlocks(map_underGround_2.underGround_isBlock);
                     floor = underGround_2.findPath();
                     break;
-                case B3:
+                case MapInfo.B3:
                     better_transportation =map_underGround_3.better_Means_Transportation(initialNode,finalNode);
-                    underGround_3 = new Navigation(map_underGround_3.underGround_rows, map_underGround_3.underGround_cols, initialNode, better_transportation,B3);
+                    underGround_3 = new Navigation(map_underGround_3.underGround_rows, map_underGround_3.underGround_cols, initialNode, better_transportation,MapInfo.B3);
                     //underGround_3.setBlocks(map_underGround_3.underGround_isBlock);
                     floor = underGround_3.findPath();
                     break;
@@ -101,18 +68,18 @@ public class MainActivity extends AppCompatActivity {
             }
 
             switch(finalNode.getFloor()){
-                case B1:
-                    underGround_1 = new Navigation(map_underGround_1.underGround_rows, map_underGround_1.underGround_cols, better_transportation, finalNode,B1);
+                case MapInfo.B1:
+                    underGround_1 = new Navigation(map_underGround_1.underGround_rows, map_underGround_1.underGround_cols, better_transportation, finalNode,MapInfo.B1);
                     //underGround_1.setBlocks(map_underGround_1.underGround_isBlock);
                     other_floor = underGround_1.findPath();
                     break;
-                case B2:
-                    underGround_2 = new Navigation(map_underGround_2.underGround_rows, map_underGround_2.underGround_cols, better_transportation, finalNode,B2);
+                case MapInfo.B2:
+                    underGround_2 = new Navigation(map_underGround_2.underGround_rows, map_underGround_2.underGround_cols, better_transportation, finalNode,MapInfo.B2);
                     //underGround_2.setBlocks(map_underGround_2.underGround_isBlock);
                     other_floor = underGround_2.findPath();
                     break;
-                case B3:
-                    underGround_3 = new Navigation(map_underGround_3.underGround_rows, map_underGround_3.underGround_cols, better_transportation, finalNode,B3);
+                case MapInfo.B3:
+                    underGround_3 = new Navigation(map_underGround_3.underGround_rows, map_underGround_3.underGround_cols, better_transportation, finalNode,MapInfo.B3);
                     //underGround_3.setBlocks(map_underGround_3.underGround_isBlock);
                     other_floor = underGround_3.findPath();
                     break;
@@ -125,18 +92,18 @@ public class MainActivity extends AppCompatActivity {
         }
         else{
             switch (initialNode.getFloor()){
-                case B1:
-                    underGround_1 = new Navigation(map_underGround_1.underGround_rows,map_underGround_1.underGround_cols,initialNode,finalNode,B1);
+                case MapInfo.B1:
+                    underGround_1 = new Navigation(map_underGround_1.underGround_rows,map_underGround_1.underGround_cols,initialNode,finalNode,MapInfo.B1);
                     //underGround_1.setBlocks(map_underGround_1.underGround_isBlock);
                     path = underGround_1.findPath();
                     break;
-                case B2:
-                    underGround_2 = new Navigation(map_underGround_2.underGround_rows,map_underGround_2.underGround_cols,initialNode,finalNode,B2);
+                case MapInfo.B2:
+                    underGround_2 = new Navigation(map_underGround_2.underGround_rows,map_underGround_2.underGround_cols,initialNode,finalNode,MapInfo.B2);
                     //underGround_2.setBlocks(map_underGround_1.underGround_isBlock);
                     path = underGround_2.findPath();
                     break;
-                case B3:
-                    underGround_3 = new Navigation(map_underGround_3.underGround_rows,map_underGround_3.underGround_cols,initialNode,finalNode,B3);
+                case MapInfo.B3:
+                    underGround_3 = new Navigation(map_underGround_3.underGround_rows,map_underGround_3.underGround_cols,initialNode,finalNode,MapInfo.B3);
                     //underGround_3.setBlocks(map_underGround_1.underGround_isBlock);
                     path = underGround_3.findPath();
                     break;
