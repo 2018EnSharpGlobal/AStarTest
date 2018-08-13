@@ -25,16 +25,23 @@ public class MapInfo {
     public static final int elevator_4 = 10;
 
     //계단
+    //1~2층 연결 계단
     public static final int stair_1 = 11;
     public static final int stair_2 = 12;
+    //2~3층 연결 계단
+    public static final int stair_3 = 13;
+    public static final int stair_4 = 14;
+    public static final int stair_5 = 15;
+    public static final int stair_6 = 16;
+
 
     //화장실
-    public static final int men_bathroom = 13;
-    public static final int women_bathroom = 14;
+    public static final int men_bathroom = 17;
+    public static final int women_bathroom = 18;
 
     //개찰구
-    public static final int ticket_barrier1 = 15;
-    public static final int ticket_barrier2 = 16;
+    public static final int ticket_barrier1 = 19;
+    public static final int ticket_barrier2 = 20;
 
     //지도 행,열
     public static final int map_row = 200;
