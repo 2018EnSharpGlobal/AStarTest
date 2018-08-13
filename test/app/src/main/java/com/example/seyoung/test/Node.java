@@ -147,119 +147,149 @@ public class Node {
     }
 
     public boolean IsBlock(){
-        if(this.inforamtion == MainActivity.block)
+        if(this.inforamtion == MapInfo.block)
             return true;
         else
             return false;
     }
 
     public boolean IsExit_1(){
-        if(this.inforamtion == MainActivity.exit_1)
+        if(this.inforamtion == MapInfo.exit_1)
             return true;
         else
             return false;
     }
 
     public boolean IsExit_2(){
-        if(this.inforamtion == MainActivity.exit_2)
+        if(this.inforamtion == MapInfo.exit_2)
             return true;
         else
             return false;
     }
 
     public boolean IsExit_3(){
-        if(this.inforamtion == MainActivity.exit_3)
+        if(this.inforamtion == MapInfo.exit_3)
             return true;
         else
             return false;
     }
 
     public boolean IsExit_4(){
-        if(this.inforamtion == MainActivity.exit_4)
+        if(this.inforamtion == MapInfo.exit_4)
             return true;
         else
             return false;
     }
 
     public boolean IsExit_5(){
-        if(this.inforamtion == MainActivity.exit_5)
+        if(this.inforamtion == MapInfo.exit_5)
             return true;
         else
             return false;
     }
 
     public boolean IsExit_6(){
-        if(this.inforamtion == MainActivity.exit_6)
+        if(this.inforamtion == MapInfo.exit_6)
             return true;
         else
             return false;
     }
 
     public boolean IsElevator_1(){
-        if(this.inforamtion == MainActivity.elevator_1)
+        if(this.inforamtion == MapInfo.elevator_1)
             return true;
         else
             return false;
     }
 
     public boolean IsElevator_2(){
-        if(this.inforamtion == MainActivity.elevator_2)
+        if(this.inforamtion == MapInfo.elevator_2)
             return true;
         else
             return false;
     }
 
     public boolean IsElevator_3(){
-        if(this.inforamtion == MainActivity.elevator_3)
+        if(this.inforamtion == MapInfo.elevator_3)
             return true;
         else
             return false;
     }
 
     public boolean IsElevator_4(){
-        if(this.inforamtion == MainActivity.elevator_4)
+        if(this.inforamtion == MapInfo.elevator_4)
             return true;
         else
             return false;
     }
 
     public boolean IsStair_1(){
-        if(this.inforamtion == MainActivity.stair_1)
+        if(this.inforamtion == MapInfo.stair_1)
             return true;
         else
             return false;
     }
 
     public boolean IsStair_2(){
-        if(this.inforamtion == MainActivity.stair_2)
+        if(this.inforamtion == MapInfo.stair_2)
             return true;
         else
             return false;
     }
 
+    public boolean IsStair_3(){
+        if(this.inforamtion == MapInfo.stair_3)
+            return true;
+        else
+            return false;
+    }
+
+    public boolean IsStair_4(){
+        if(this.inforamtion == MapInfo.stair_4)
+            return true;
+        else
+            return false;
+    }
+
+    public boolean IsStair_5(){
+        if(this.inforamtion == MapInfo.stair_5)
+            return true;
+        else
+            return false;
+    }
+
+    public boolean IsStair_6(){
+        if(this.inforamtion == MapInfo.stair_6)
+            return true;
+        else
+            return false;
+    }
+
+
+
     public boolean IsMen_bathroom(){
-        if(this.inforamtion == MainActivity.men_bathroom)
+        if(this.inforamtion == MapInfo.men_bathroom)
             return true;
         else
             return false;
     }
 
     public boolean IsWomen_bathroom(){
-        if(this.inforamtion == MainActivity.women_bathroom)
+        if(this.inforamtion == MapInfo.women_bathroom)
             return true;
         else
             return false;
     }
 
     public boolean IsTicket_barrier1(){
-        if(this.inforamtion == MainActivity.ticket_barrier1)
+        if(this.inforamtion == MapInfo.ticket_barrier1)
             return true;
         else
             return false;
     }
 
     public boolean IsTicket_barrier2(){
-        if(this.inforamtion == MainActivity.ticket_barrier2)
+        if(this.inforamtion == MapInfo.ticket_barrier2)
             return true;
         else
             return false;

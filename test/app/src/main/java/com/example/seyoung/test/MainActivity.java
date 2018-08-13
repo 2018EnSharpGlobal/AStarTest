@@ -9,14 +9,11 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    SubWayMap map_underGround_1;
-    SubWayMap map_underGround_2;
-    SubWayMap map_underGround_3;
-
     //위도 경도
     double user_latitude;
     double user_longitude;
 
+    //사용자 층 수
     int user_floor;
 
     boolean use_elevator;
@@ -34,19 +31,16 @@ public class MainActivity extends AppCompatActivity {
         Node finalNode = new Node(0, 3);
         finalNode.setFloor(-2);
 
-        map_underGround_1 = new UnderGround_1();
-        map_underGround_2 = new UnderGround_2();
-        map_underGround_3 = new UnderGround_3();
-
         List<Node> path = null;
 
         List<Node> floor = null;
         List<Node> other_floor = null;
 
-        Navigation underGround_1 = new Navigation(MapInfo.map_row, MapInfo.map_col, MapInfo.B1);
-        Navigation underGround_2 = new Navigation(MapInfo.map_row, MapInfo.map_col, MapInfo.B2);
-        Navigation underGround_3 = new Navigation(MapInfo.map_row, MapInfo.map_col, MapInfo.B3);
+        Navigation underGround_1 = new Navigation(MapInfo.map_rows, MapInfo.map_cols, MapInfo.B1);
+        Navigation underGround_2 = new Navigation(MapInfo.map_rows, MapInfo.map_cols, MapInfo.B2);
+        Navigation underGround_3 = new Navigation(MapInfo.map_rows, MapInfo.map_cols, MapInfo.B3);
 
+        //층 수 가 다를 경우
         if (initialNode.getFloor() != finalNode.getFloor()) {
             Navigation initial_Navi = null;
             Navigation final_Navi = null;
@@ -371,8 +365,8 @@ public class MainActivity extends AppCompatActivity {
         for(Node node : path) {
             if (node.getRow() - 2 >= 0 &&
                     node.getCol() - 2 >= 0 &&
-                    node.getRow() + 2 <= map_underGround_1.underGround_rows &&
-                    node.getCol() + 2 <= map_underGround_1.underGround_cols) {
+                    node.getRow() + 2 <= MapInfo.map_rows &&
+                    node.getCol() + 2 <= MapInfo.map_cols) {
                 if (node.getRow() - 2 <= user_row ||
                         user_row <= node.getRow() + 2 ||
                         node.getCol() - 2 <= user_col ||
@@ -390,7 +384,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //최소의 F값 찾기
-    protected  int compare_Minimum(int[] means_transportation){
+    public  int compare_Minimum(int[] means_transportation){
         int find_Minimum = means_transportation[0];
         for(int i=1;i<means_transportation.length;i++){
             if(find_Minimum >= means_transportation[i]){
@@ -407,4 +401,14 @@ public class MainActivity extends AppCompatActivity {
 
         return find_component;
     }
+
+    public String get_Device_bearing(double bearing){
+        return "";
+
+    }
+
+    public void get_Next_Path(){
+
+    }
+
 }

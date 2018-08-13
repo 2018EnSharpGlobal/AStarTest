@@ -44,6 +44,6 @@ public class MapInfo {
     public static final int ticket_barrier2 = 20;
 
     //지도 행,열
-    public static final int map_row = 200;
-    public static final int map_col = 45;
+    public static final int map_rows = 200;
+    public static final int map_cols = 45;
 }
