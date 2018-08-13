@@ -35,4 +35,8 @@ public class MapInfo {
     //개찰구
     public static final int ticket_barrier1 = 15;
     public static final int ticket_barrier2 = 16;
+
+    //지도 행,열
+    public static final int map_row = 200;
+    public static final int map_col = 45;
 }

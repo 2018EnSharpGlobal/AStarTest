@@ -31,18 +31,12 @@ public class Navigation {
     private Node finalNode;
 
     //생성자 함수
-    public Navigation(int rows, int cols, Node initialNode, Node finalNode, int hvCost, int diagonalCost,int floor) {
+    public Navigation(int rows, int cols,int hvCost, int diagonalCost,int floor) {
         this.hvCost = hvCost;
         this.diagonalCost = diagonalCost;
 
-        setInitialNode(initialNode);
-        setFinalNode(finalNode);
-
         //지도 설정하기
         this.searchArea = new Node[rows][cols];
-
-        //층 수 삽입
-        this.floor =floor;
 
         //노드 정보 초기화
         for(int row = 0; row <searchArea.length; row++){
@@ -50,6 +44,9 @@ public class Navigation {
                 searchArea[row][col].setInforamtion(-1);
             }
         }
+
+        //층 수 삽입
+        this.floor =floor;
 
         //열린 목록을 우선순위큐 리스트로 만듦
         this.openList = new PriorityQueue<Node>(new Comparator<Node>() {
@@ -65,8 +62,8 @@ public class Navigation {
     }
 
     //생성사 오버로딩
-    public Navigation(int rows, int cols, Node initialNode, Node finalNode,int floor) {
-        this(rows, cols, initialNode, finalNode, DEFAULT_HV_COST, DEFAULT_DIAGONAL_COST,floor);
+    public Navigation(int rows, int cols, int floor) {
+        this(rows, cols, DEFAULT_HV_COST, DEFAULT_DIAGONAL_COST,floor);
     }
 
     //노드로 지도 그리기
@@ -212,6 +209,22 @@ public class Navigation {
                 }
             }
         }
+    }
+
+    //이동수단에 대한 F값 계산하기
+    public int calculate_F(Node initialNode,Node finalNode){
+       set_Initail_Final_Node(initialNode,finalNode);
+       int check = 0;
+        List<Node> temp = findPath();
+        for(Node node : temp){
+            check += node.getF();
+        }
+        return check;
+    }
+
+    protected void set_Initail_Final_Node(Node initialNode,Node finalNode){
+        setInitialNode(initialNode);
+        setFinalNode(finalNode);
     }
 
     private boolean isFinalNode(Node currentNode) {

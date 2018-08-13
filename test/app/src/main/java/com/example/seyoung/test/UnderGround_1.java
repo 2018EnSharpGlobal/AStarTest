@@ -74,7 +74,7 @@ public class UnderGround_1 extends SubWayMap {
         int find_means_Transportation;
 
         //엘레베이터
-        Navigation better_find_path = new Navigation(underGround_rows,underGround_cols,initalNode,elevator_1,MainActivity.B1);
+        Navigation better_find_path = new Navigation(underGround_rows,underGround_cols,initalNode,elevator_1,MapInfo.B1);
 
         for(Node node : better_find_path.findPath()){
             check_means_Transportation[0]  += node.getF();
@@ -156,7 +156,7 @@ public class UnderGround_1 extends SubWayMap {
     public Node stair_Means_Transportation(Node initalNode, Node finalNode) {
         int find_stair;
 
-        Navigation better_find_path = new Navigation(underGround_rows,underGround_cols,initalNode,stair_1,MainActivity.B1);
+        Navigation better_find_path = new Navigation(underGround_rows,underGround_cols,initalNode,stair_1,MapInfo.B1);
         for(Node node : better_find_path.findPath()){
             check_Stair[0]  += node.getF();
         }
@@ -188,7 +188,7 @@ public class UnderGround_1 extends SubWayMap {
     public Node elevator_Means_Transportation(Node initalNode, Node finalNode) {
         int find_elevator;
 
-        Navigation better_find_path = new Navigation(underGround_rows,underGround_cols,initalNode,elevator_1,MainActivity.B1);
+        Navigation better_find_path = new Navigation(underGround_rows,underGround_cols,initalNode,elevator_1,MapInfo.B1);
         for(Node node : better_find_path.findPath()){
             check_Elevator[0]  += node.getF();
         }
