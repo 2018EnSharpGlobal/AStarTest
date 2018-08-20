@@ -38,12 +38,12 @@ public class Navigation {
         //지도 설정하기
         this.searchArea = new Node[rows][cols];
 
-        //노드 정보 초기화
-        for(int row = 0; row <searchArea.length; row++){
-            for(int col = 0; col < searchArea[row].length; col++){
-                searchArea[row][col].setInforamtion(-1);
-            }
-        }
+//        //노드 정보 초기화
+//        for(int row = 0; row <searchArea.length; row++){
+//            for(int col = 0; col < searchArea[row].length; col++){
+//                searchArea[row][col].setInforamtion(-1);
+//            }
+//        }
 
         //층 수 삽입
         this.floor =floor;
@@ -56,7 +56,7 @@ public class Navigation {
             }
         });
 
-        setNodes();
+        //setNodes();
 
         this.closedList = new ArrayList<Node>();
     }
@@ -67,7 +67,7 @@ public class Navigation {
     }
 
     //노드로 지도 그리기
-    private void setNodes() {
+    public void setNodes() {
         for (int i = 0; i < searchArea.length; i++) {
             for (int j = 0; j < searchArea[0].length; j++) {
                 Node node = new Node(i, j);
@@ -78,21 +78,11 @@ public class Navigation {
         }
     }
 
-//    //지도에서 막힌 부분 설정하는 함수
-//    public void setBlocks(int[][] blocksArray) {
-//        for (int i = 0; i < blocksArray.length; i++) {
-//            int row = blocksArray[i][0];
-//            int col = blocksArray[i][1];
-//            setBlock(row, col);
-//        }
-//    }
-
     //지도에 있는 정보
     public void setInformations(int[][] infoArray){
-        for(int row=0;row< infoArray.length; row++){
+        for(int row=0; row < infoArray.length; row++){
             for(int col = 0 ; col < infoArray[row].length; col++){
                 setInformations(row,col,infoArray[row][col]);
-                Log.e("searchArea: ","row:"+String.valueOf(row)+","+"col:"+String.valueOf(col)+",Value:"+String.valueOf(infoArray[row][col]));
             }
         }
     }
@@ -115,7 +105,6 @@ public class Navigation {
                 addAdjacentNodes(currentNode);
             }
         }
-
         return new ArrayList<Node>();
     }
 
@@ -235,12 +224,10 @@ public class Navigation {
         return openList.size() == 0;
     }
 
-//    private void setBlock(int row, int col) {
-//        this.searchArea[row][col].setBlock(true);
-//    }
-
     //노드 정보 설정
-    private void setInformations(int row,int col,int information) { this.searchArea[row][col].setInforamtion(information);}
+    private void setInformations(int row,int col,int information) {
+        this.searchArea[row][col].setInforamtion(information);
+    }
 
     public Node getInitialNode() {
         return initialNode;
