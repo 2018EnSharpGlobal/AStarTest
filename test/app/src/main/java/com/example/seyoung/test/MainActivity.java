@@ -17,8 +17,12 @@ public class MainActivity extends AppCompatActivity {
 
         procedureManager.real_get_Path();
         procedureManager.Navi_Path();
-
-
+        Log.e("outPut_1","------------------");
+        procedureManager.outPut_Navi();
+        Log.e("outPut_2","------------------");
+        procedureManager.outPut_Navi();
+        Log.e("outPut_3","------------------");
+        procedureManager.outPut_Navi();
         setContentView(R.layout.activity_main);
     }
 }

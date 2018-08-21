@@ -25,6 +25,9 @@ public class ProcedureManager {
     List<Node> floor;
     List<Node> other_floor;
 
+    ArrayList navi_text_List;
+
+
     ProcedureManager() {
 
         use_elevator = false;
@@ -39,6 +42,8 @@ public class ProcedureManager {
 
         floor = null;
         other_floor = null;
+
+        navi_text_List = new ArrayList();
     }
 
     public List<Node> real_get_Path(){
@@ -451,10 +456,9 @@ public class ProcedureManager {
         }
     }
 
-    public String Navi_Path(){
+    public void Navi_Path(){
         int i=0;
 
-        ArrayList navi_text_List = new ArrayList();
 
         for(i=0;i<path.size()-1; i++){
             int change_row = 0;
@@ -494,14 +498,37 @@ public class ProcedureManager {
             }
 
             navi_text_List.add(navi_text);
-            Log.e("[row,col]",String.valueOf("["+String.valueOf(change_row)+","+String.valueOf(change_col)+"]"));
-            Log.e("방향",String.valueOf(navi_text));
+            Log.e("방향",navi_text);
+            Log.e("path_Size",String.valueOf(path.size()));
+//            Log.e("[row,col]",String.valueOf("["+String.valueOf(change_row)+","+String.valueOf(change_col)+"]"));
+//            Log.e("방향",navi_text);
         }
 
-        return "";
     }
 
-    public void outPut_Navi(ArrayList navi_text_list){
+    public void outPut_Navi(){
+        String current_text =(String)navi_text_List.get(0);
+        int count = 1 ;
+
+        int i=1;
+        while((String)navi_text_List.get(i)== current_text){
+            i++;
+            count++;
+        }
+
+        Log.e("i의 값",String.valueOf(i));
+
+//        for(Object text : navi_text_List){
+//            Log.e("navi",(String)text);
+//        }
+
+        for(int j=0;j<i;j++){
+            navi_text_List.remove(0);
+        }
+
+        Log.e(" 방향",current_text);
+        Log.e("거리",String.valueOf(count*MapInfo.node_space)+"m");
+
 
     }
 }
